@@ -22,7 +22,7 @@ Include:
 </script>
 ```
 Your HTML file should look similar to this:
-``html
+```html
 <!DOCTYPE html>
 <html>
   <head>
