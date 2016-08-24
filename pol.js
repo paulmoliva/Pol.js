@@ -82,6 +82,8 @@ function _getPollID(state){
     return 5491;
   } else if (state === 'ohio'){
     return 5634;
+  } else if (state === 'virginia'){
+    return 5542;
   } else {
     return 5491;
   }
