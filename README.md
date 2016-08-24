@@ -8,14 +8,15 @@ Pol.js is a synthetic API for retrieving Real Clear Politics polling data.
 
 Clone the repo and create a new HTML file.
 Ensure that you include jquery and pol.js in your HTML file.
-Include:
+In your html body, include:
 ```html
 <div class="polls" id="polls-root">
 
 </div>
 ```
-in your html body.
-Include:
+
+
+Also include your calls in a script tag:
 ```html
 <script>
   presidentialPoll();
