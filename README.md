@@ -21,7 +21,28 @@ Include:
   presidentialPoll();
 </script>
 ```
-at the bottom of your body, outside the div tag you just created.
+Your HTML file should look similar to this:
+``html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="../pol.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <title>Pol.js Demo</title>
+  </head>
+  <body>
+    <div class="polls" id="polls-root">
+
+    </div>
+    <script>
+      presidentialPoll();
+      presidentialPoll('ohio');
+      presidentialPoll(5542);
+    </script>
+  </body>
+</html>
+```
 Open the page in Chrome.
 
 ##Documentation:
