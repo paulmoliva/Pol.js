@@ -21,7 +21,7 @@ Include:
   presidentialPoll();
 </script>
 ```
-Your HTML file should look similar to this:
+Your HTML file could look something like this:
 ```html
 <!DOCTYPE html>
 <html>
@@ -38,6 +38,9 @@ Your HTML file should look similar to this:
     <script>
       presidentialPoll();
       presidentialPoll('ohio');
+      presidentialPoll('pennsylvania');
+      presidentialPoll('North Carolina');
+      presidentialPoll('NEW HAMPSHIRE');
       presidentialPoll(5542);
     </script>
   </body>

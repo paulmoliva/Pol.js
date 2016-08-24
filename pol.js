@@ -75,6 +75,7 @@ function presidentialPoll(state = 'national', format = 'html'){
 }
 
 function _getPollID(state){
+  state = state.toLowerCase();
   if (typeof state === 'number'){
     return state;
   }
@@ -84,6 +85,36 @@ function _getPollID(state){
     return 5634;
   } else if (state === 'virginia'){
     return 5542;
+  } else if (state === 'florida'){
+    return 5635;
+  } else if (state === 'michigan'){
+    return 5533;
+  } else if (state === 'pennsylvania'){
+    return 5633;
+  } else if (state === 'virginia'){
+    return 5542;
+  } else if (state === 'north carolina' ){
+    return 5538;
+  } else if (state === 'georgia'){
+    return 5741;
+  } else if (state === 'new hampshire'){
+    return 5596;
+  } else if (state === 'wisconsin'){
+    return 5659;
+  } else if (state === 'iowa'){
+    return 5597;
+  } else if (state === 'minnesota'){
+    return 5591;
+  } else if (state === 'missouri'){
+    return 5609;
+  } else if (state === 'colorado'){
+    return 5751;
+  } else if (state === 'nevada'){
+    return 5891;
+  } else if (state === 'arizona'){
+    return 5832;
+  } else if (state === 'oregon'){
+    return 5892;
   } else {
     return 5491;
   }
