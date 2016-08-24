@@ -75,7 +75,10 @@ function presidentialPoll(state = 'national', format = 'html'){
 }
 
 function _getPollID(state){
-  if (state === 'national'){
+  if (typeof state === 'number'){
+    return state;
+  }
+  else if (state === 'national'){
     return 5491;
   } else if (state === 'ohio'){
     return 5634;
