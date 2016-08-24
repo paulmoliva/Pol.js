@@ -44,7 +44,15 @@ function htmlDisplay(obj){
   let candidates = data.candidate;
   for (let i = 0; i < candidates.length; i++){
     let color;
-    color = (candidates[i].affiliation === "Democrat") ? "blue" : "red";
+    if (candidates[i].affiliation === "Democrat"){
+      color = 'blue';
+    } else if (candidates[i].affiliation === "Republican"){
+      color = 'red';
+    } else if (candidates[i].affiliation === "Green"){
+      color = 'green';
+    } else if (candidates[i].affiliation === "Libertarian"){
+      color = 'yellow';
+    }
     $pollDiv.append(`<div class = 'candidate-name' id = poll-${count}-candidate${i}-name></div>`);
     $pollDiv.append(`<div class = 'candidate-value' id = poll-${count}-candidate${i}-value></div>`);
     $(`#poll-${count}-candidate${i}-name`)[0].innerHTML = (candidates[i].name);
@@ -75,11 +83,11 @@ function presidentialPoll(state = 'national', format = 'html'){
 }
 
 function _getPollID(state){
-  state = state.toLowerCase();
   if (typeof state === 'number'){
     return state;
   }
-  else if (state === 'national'){
+  state = state.toLowerCase();
+  if (state === 'national'){
     return 5491;
   } else if (state === 'ohio'){
     return 5634;
@@ -115,6 +123,42 @@ function _getPollID(state){
     return 5832;
   } else if (state === 'oregon'){
     return 5892;
+  } else if (state === 'california') {
+    return  5849;
+  } else if (state === 'massachusetts') {
+    return  5863;
+  } else if (state === 'dc') {
+    return  5901;
+  } else if (state === 'hawaii') {
+    return  5902;
+  } else if (state === 'maryland') {
+    return  5859;
+  } else if (state === 'rhode island') {
+    return   5909;
+  } else if (state === 'vermont') {
+    return  5912;
+  } else if (state === 'alaska') {
+    return 5884;
+  } else if (state === 'arkansas') {
+    return 5899;
+  } else if (state === 'kentucky') {
+    return 5523;
+  } else if (state === 'idaho') {
+    return 5903;
+  } else if (state === 'nebraska') {
+    return 5905;
+  } else if (state === 'north dakota') {
+    return  5907;
+  } else if (state === 'oklahoma') {
+    return  5908;
+  } else if (state === 'tennessee') {
+    return 5911;
+  } else if (state === 'west virginia') {
+    return 5885;
+  } else if (state === 'wyoming') {
+    return  5913;
+  } else if (state === 'four-way-national'){
+      return 5952;
   } else {
     return 5491;
   }
