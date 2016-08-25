@@ -157,8 +157,70 @@ function _getPollID(state){
     return 5885;
   } else if (state === 'wyoming') {
     return  5913;
-  } else if (state === 'four-way-national'){
-      return 5952;
+  } else if (state === 'washington')
+       return 5895;
+    else if (state === 'delaware')
+       return 5900;
+    else if (state === 'illinois')
+       return 5583;
+    else if (state === 'new york')
+       return 5792;
+    else if (state === 'new hampshire')
+       return 5596;
+    else if (state === 'pennsylvania')
+       return 5633;
+    else if (state === 'michigan')
+       return 5533;
+    else if (state === 'wisconsin')
+       return 5659;
+    else if (state === 'colorado')
+       return 5751;
+    else if (state === 'minnesota')
+       return 5591;
+    else if (state === 'oregon')
+       return 5892;
+    else if (state === 'new mexico')
+       return 5894;
+    else if (state === 'connecticut')
+       return 5720;
+    else if (state === 'maine')
+       return 5896;
+    else if (state === 'ohio')
+       return 5634;
+    else if (state === 'florida')
+       return 5635;
+    else if (state === 'north carolina')
+       return 5538;
+    else if (state === 'iowa')
+       return 5597;
+    else if (state === 'nevada')
+       return 5891;
+    else if (state === 'arizona')
+       return 5832;
+    else if (state === 'georgia')
+       return 5741;
+    else if (state === 'missouri')
+       return 5609;
+    else if (state === 'maine')
+       return 5897;
+    else if (state === 'south carolina')
+       return 5748;
+    else if (state === 'utah')
+       return 5971;
+    else if (state === 'texas')
+       return 5694;
+    else if (state === 'nebraska')
+       return 5906;
+    else if (state === 'montana')
+       return 5893;
+    else if (state === 'louisiana')
+       return 5696;
+    else if (state === 'south dakota')
+       return 5910;
+    else if (state === 'kansas')
+       return 5904;
+     else if (state === 'four-way-national'){
+        return 5952;
   } else {
     return 5491;
   }
