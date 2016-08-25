@@ -241,20 +241,42 @@ function _getPollID(state){
 
 var idx = 0;
 
-function pollChart(){
-  _make_request(5491, makeArray);
+function pollChart(state){
+  let id = _getPollID(state);
+  _make_request(id, makeArray);
 }
 
-function makeArray(obj, i = idx) {
+function makeArray(obj, size = 60) {
   let poll = obj.poll;
-  pollData = poll.rcp_avg;
-  let k = idx+1;
-  dates = pollData.map( el => el.date.split([' ']).slice(1,4).join(' '));
+  let rcpPoll = poll.rcp_avg;
+  dates = rcpPoll.map( el => el.date.split([' ']).slice(1,4).join(' '));
   console.log(dates[0].split(' ').slice(0,4));
-  console.log(pollData[0].candidate);
-  let pollData2 = pollData.map( (el, j) => (el.candidate[k].value) );
-  pollData = pollData.map( (el, j) => (el.candidate[i].value) );
+  console.log(rcpPoll[0].candidate);
+  let dataArray = [];
 
+  for (let i =0; i < rcpPoll[0].candidate.length; i++){
+    let pollData2 = rcpPoll.map( (el, j) => (el.candidate[i].value) );
+    let color;
+    switch (rcpPoll[0].candidate[i].affiliation){
+      case 'Democrat':
+        color = 'blue';
+        break;
+      case 'Republican':
+        color = 'red';
+        break;
+      case 'Green':
+        color = 'green';
+        break;
+      case 'Libertarian':
+        color = 'yellow';
+        break;
+      default:
+        color = 'orange';
+    }
+
+    dataArray.push({data: pollData2.slice(0,size).reverse(), label: rcpPoll[0].candidate[i].name, borderColor: color});
+  }
+  console.log(dataArray);
   var ctx = document.getElementById('canvas').getContext('2d');
   var data = {
     datasets: [{
@@ -262,10 +284,7 @@ function makeArray(obj, i = idx) {
     }]
   };
   var myLineChart = new Chart.Line(ctx, {
-    data: {datasets:[
-            {data: pollData.reverse().slice(pollData.length -31), label: 'Clinton', borderColor: 'blue'},
-            {data: pollData2.reverse().slice(pollData.length -31), label: 'Trump', borderColor: 'red'}
-          ], labels: dates.reverse().slice(pollData.length -31)
+    data: {datasets: dataArray, labels: dates.slice(0,size).reverse()
 
   },
 
