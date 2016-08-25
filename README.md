@@ -63,3 +63,7 @@ presidentialPoll(5542);
 //is the same as:
 presidentialPoll('virginia', 'html');
 ```
+You can get the 4 way race polling with:
+```JavaScript
+presidentialPoll('four-way-national');
+```
