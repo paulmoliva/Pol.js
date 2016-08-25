@@ -38,10 +38,12 @@ function htmlDisplay(obj){
   let $pollDiv = $(`#poll${count}`);
   $pollDiv.prepend($h3);
   let data = poll.rcp_avg[0];
+  let prevDay = poll.rcp_avg[1];
   let $h4 = $('<h4></h4>');
   $h4.html(data.date);
   $pollDiv.append($h4);
   let candidates = data.candidate;
+  let prevCandidates = prevDay.candidate;
   for (let i = 0; i < candidates.length; i++){
     let color;
     if (candidates[i].affiliation === "Democrat"){
@@ -53,12 +55,21 @@ function htmlDisplay(obj){
     } else if (candidates[i].affiliation === "Libertarian"){
       color = 'yellow';
     }
-    $pollDiv.append(`<div class = 'candidate-name' id = poll-${count}-candidate${i}-name></div>`);
+    let value = candidates[i].value;
+    let prevValue = prevCandidates[i].value;
+    if (value === prevValue){
+      var arrowText = '';
+    } else if (value > prevValue){
+      var arrowText = `<span style = "color: green; font-size: 14px">▲${Math.round((value - prevValue) * 10) / 10}</span>`;
+    } else {
+      var arrowText = `<span style = "color: red; font-size: 14px">▼${Math.round((value - prevValue) * 10) / 10}</span>`;
+    }    $pollDiv.append(`<div class = 'candidate-name' id = poll-${count}-candidate${i}-name></div>`);
     $pollDiv.append(`<div class = 'candidate-value' id = poll-${count}-candidate${i}-value></div>`);
-    $(`#poll-${count}-candidate${i}-name`)[0].innerHTML = (candidates[i].name);
-    $(`#poll-${count}-candidate${i}-value`)[0].innerHTML = (candidates[i].value);
+    $(`#poll-${count}-candidate${i}-name`)[0].innerHTML = '<strong>' + (candidates[i].name) + '<strong>';
+    $(`#poll-${count}-candidate${i}-value`)[0].innerHTML = (candidates[i].value + '%' + arrowText);
+    console.log(arrowText);
     let el = $(`#poll-${count}-candidate${i}-value`)[0];
-    $(el).css({'width': `${candidates[i].value * 2}px`, 'border-bottom': 'solid', 'border-bottom-color': `${color}`});
+    $(el).css({'width': `${candidates[i].value * 2}px`, 'overflow-x':'visible', 'border-bottom': 'solid 7px', 'border-bottom-color': `${color}`});
   }
   count ++;
 }
