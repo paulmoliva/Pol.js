@@ -1,5 +1,6 @@
 
 let pollData = {};
+let dates = [];
 var count = 0;
 function _make_request(pollID, callBack){
   const rcpURL = 'http://www.realclearpolitics.com/epolls/json/';
@@ -247,8 +248,13 @@ function pollChart(){
 function makeArray(obj, i = idx) {
   let poll = obj.poll;
   pollData = poll.rcp_avg;
+  let k = idx+1;
+  dates = pollData.map( el => el.date.split([' ']).slice(1,4).join(' '));
+  console.log(dates[0].split(' ').slice(0,4));
+  console.log(pollData[0].candidate);
+  let pollData2 = pollData.map( (el, j) => (el.candidate[k].value) );
   pollData = pollData.map( (el, j) => (el.candidate[i].value) );
-  console.log(pollData);
+
   var ctx = document.getElementById('canvas').getContext('2d');
   var data = {
     datasets: [{
@@ -256,8 +262,13 @@ function makeArray(obj, i = idx) {
     }]
   };
   var myLineChart = new Chart.Line(ctx, {
-    data: {datasets:[{data: pollData, label: 'hi'}], labels: ['hi']},
-    
+    data: {datasets:[
+            {data: pollData.reverse().slice(pollData.length -31), label: 'Clinton', borderColor: 'blue'},
+            {data: pollData2.reverse().slice(pollData.length -31), label: 'Trump', borderColor: 'red'}
+          ], labels: dates.reverse().slice(pollData.length -31)
+
+  },
+
     options: {}
   });
 }
