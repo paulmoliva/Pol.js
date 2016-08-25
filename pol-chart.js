@@ -15,17 +15,17 @@ function _make_request(pollID, callBack){
         success: (someData) => {
           console.log('success!');
         },
-        error: () => {
-          console.log(pollData);
-          callBack(pollData);
+        error: (data) => {
+          console.log(data);
+          callBack(data);
         }
       });
   });
 }
 
-function return_json(obj) {
-  pollData = obj;
-}
+// function return_json(obj) {
+//   console.log('in return json');
+// }
 
 
 function htmlDisplay(obj){
@@ -246,7 +246,7 @@ function pollChart(state){
   _make_request(id, makeArray);
 }
 
-function makeArray(obj, size = 60) {
+function makeArray(obj, size = 61) {
   let poll = obj.poll;
   let rcpPoll = poll.rcp_avg;
   dates = rcpPoll.map( el => el.date.split([' ']).slice(1,4).join(' '));
