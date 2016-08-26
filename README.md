@@ -70,7 +70,8 @@ If you want to constrain the size of your chart, place it in a div with a fixed 
   <canvas id="canvas" width="300" height="15"></canvas>
 </div>
 ```
-It's that easy! 
+Live Demo [here](http://www.pauloliva.com/chart-demo.html)
+It's that easy!
 ##Documentation:
 ```JavaScript
   presidentialPoll(state = 'national', format = 'html')
