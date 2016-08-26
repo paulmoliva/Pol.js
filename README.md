@@ -1,8 +1,8 @@
 # Pol.js
-Lightweight JavaScript library for political polling data
+Embed the most up to date political polling data and charts in your site with pol.js.
 
 ##About:
-Pol.js is a synthetic API for retrieving Real Clear Politics polling data.
+Pol.js is a synthetic API that retrieves up to the minute polling data from Real Clear Politics and embeds it in your website hassle-free..
 
 ##Quick Start:
 
@@ -49,6 +49,28 @@ Your HTML file could look something like this:
 ```
 Open the page in Chrome.
 
+###Embedding Charts
+First, download [chart.js](http://www.chartjs.org/) and include it in your html file:
+```html
+    <script src="./assets/Chart.js" charset="utf-8"></script>
+```
+create a canvas element with id 'canvas':
+```html
+<canvas id="canvas" width="600" height="300"></canvas>
+```
+call pollChart with your desired data passed in as a string:
+```html
+<script>
+  pollChart('four-way-national');
+</script>
+```
+If you want to constrain the size of your chart, place it in a div with a fixed size:
+```html
+<div class="canvas-container" style: 'width: 600px; height: 250px;'>
+  <canvas id="canvas" width="300" height="15"></canvas>
+</div>
+```
+It's that easy! 
 ##Documentation:
 ```JavaScript
   presidentialPoll(state = 'national', format = 'html')
