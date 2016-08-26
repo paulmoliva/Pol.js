@@ -66,8 +66,8 @@ call pollChart with your desired data passed in as a string:
 ```
 If you want to constrain the size of your chart, place it in a div with a fixed size:
 ```html
-<div class="canvas-container" style: 'width: 600px; height: 250px;'>
-  <canvas id="canvas" width="300" height="15"></canvas>
+<div class="canvas-container" style: 'width: 600px; height: 300px;'>
+  <canvas id="canvas" width="600" height="300"></canvas>
 </div>
 ```
 Live Demo [here](http://www.pauloliva.com/chart-demo.html)
