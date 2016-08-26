@@ -1,7 +1,9 @@
 
 let pollData = {};
+let dates = [];
 var count = 0;
 function _make_request(pollID, callBack){
+
   const rcpURL = 'http://www.realclearpolitics.com/epolls/json/';
   const historical = '_historical.js';
   const requestURL = rcpURL + pollID + historical;
@@ -11,11 +13,9 @@ function _make_request(pollID, callBack){
       {
         url: rcpURL + pollID.toString() + historical,
         dataType: 'jsonp',
-        success: (data) => {
-          console.log('success!');
+        success: (someData) => {
         },
         error: () => {
-          console.log(pollData);
           callBack(pollData);
         }
       });
@@ -26,11 +26,12 @@ function return_json(obj) {
   pollData = obj;
 }
 
+
 function htmlDisplay(obj){
   let poll = obj.poll;
 
   //_emptyTags();
-
+  $('.sk-circle').toggleClass('hidden');
   let $h3 = $('<h3></h3>');
   $h3.html(poll.title);
   const $root = $('#polls-root');
@@ -40,7 +41,8 @@ function htmlDisplay(obj){
   let data = poll.rcp_avg[0];
   let prevDay = poll.rcp_avg[1];
   let $h4 = $('<h4></h4>');
-  $h4.html(data.date);
+  let date = data.date.split(' ').slice(0,4).join(' ');
+  $h4.html(date);
   $pollDiv.append($h4);
   let candidates = data.candidate;
   let prevCandidates = prevDay.candidate;
@@ -67,7 +69,6 @@ function htmlDisplay(obj){
     $pollDiv.append(`<div class = 'candidate-value' id = poll-${count}-candidate${i}-value></div>`);
     $(`#poll-${count}-candidate${i}-name`)[0].innerHTML = '<strong>' + (candidates[i].name) + '<strong>';
     $(`#poll-${count}-candidate${i}-value`)[0].innerHTML = (candidates[i].value + '%' + arrowText);
-    console.log(arrowText);
     let el = $(`#poll-${count}-candidate${i}-value`)[0];
     $(el).css({'width': `${candidates[i].value * 2}px`, 'overflow-x':'visible', 'border-bottom': 'solid 7px', 'border-bottom-color': `${color}`});
   }
@@ -85,6 +86,7 @@ function asJSON(obj){
 }
 
 function presidentialPoll(state = 'national', format = 'html'){
+  $('.sk-circle').toggleClass('hidden');
   let id = _getPollID(state);
   if (format === 'html'){
     _make_request(id, htmlDisplay);
@@ -235,4 +237,54 @@ function _getPollID(state){
   } else {
     return 5491;
   }
+}
+
+var idx = 0;
+
+function pollChart(state){
+  let id = _getPollID(state);
+  _make_request(id, makeArray);
+}
+
+function makeArray(obj, size = 61) {
+  let poll = obj.poll;
+  let rcpPoll = poll.rcp_avg;
+  dates = rcpPoll.map( el => el.date.split([' ']).slice(1,4).join(' '));
+  let dataArray = [];
+
+  for (let i =0; i < rcpPoll[0].candidate.length; i++){
+    let pollData2 = rcpPoll.map( (el, j) => (el.candidate[i].value) );
+    let color;
+    switch (rcpPoll[0].candidate[i].affiliation){
+      case 'Democrat':
+        color = 'blue';
+        break;
+      case 'Republican':
+        color = 'red';
+        break;
+      case 'Green':
+        color = 'green';
+        break;
+      case 'Libertarian':
+        color = 'yellow';
+        break;
+      default:
+        color = 'orange';
+    }
+
+    dataArray.push({data: pollData2.slice(0,size).reverse(), label: rcpPoll[0].candidate[i].name, borderColor: color});
+  }
+  var ctx = document.getElementById('canvas').getContext('2d');
+  var data = {
+    datasets: [{
+      data: pollData
+    }]
+  };
+  var myLineChart = new Chart.Line(ctx, {
+    data: {datasets: dataArray, labels: dates.slice(0,size).reverse()
+
+  },
+
+    options: {}
+  });
 }
