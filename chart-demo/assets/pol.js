@@ -70,11 +70,12 @@ function htmlDisplay(obj){
     $(`#poll-${count}-candidate${i}-name`)[0].innerHTML = '<strong>' + (candidates[i].name) + '<strong>';
     $(`#poll-${count}-candidate${i}-value`)[0].innerHTML = (candidates[i].value + '%' + arrowText);
     let el = $(`#poll-${count}-candidate${i}-value`)[0];
-   $(el).css({'width': '1px', 'font-size': '1px', 'overflow-x':'visible', 'border-bottom': 'solid 7px', 'border-bottom-color': `${color}`});
+   $(el).css({'width': '1px', 'font-size': '1px', 'overflow-x':'visible', 'border-bottom': 'solid 1px', 'border-bottom-color': `${color}`});
     $(el).animate({
-      width: `${candidates[i].value * 2}px`,
+      width: `${candidates[i].value}%`,
+      'border-bottom-width': '7px',
       fontSize: '14px'
-    }, 1000);
+    }, 1200);
   }
   count ++;
 }
@@ -209,61 +210,8 @@ function _getPollID(state){
 
 var idx = 0;
 
-function _getSenateID(state){
-  if (typeof state === 'number'){
-    return state;
-  }
-  state = state.toLowerCase();
-  switch (state) {
-    case 'colorado':
-      return 5984;
-    case 'wisconsin':
-      return 3740;
-    case 'florida':
-      return 5222;
-    case 'indiana':
-      return 6003;
-    case 'pennsylvania':
-      return 5074;
-    case 'nevada':
-      return 5982;
-    case 'north carolina':
-      return 5693;
-    case 'new hampshire':
-      return 3862;
-    case 'missouri':
-      return 5631;
-    case 'ohio':
-      return 5386;
-    case 'iowa':
-      return 5978;
-    case 'arizona':
-      return 5455;
-    case 'california':
-      return 5991;
-    case 'new york':
-      return 5851;
-    default:
-  }
-}
-
-export function senatePoll(state, format = 'html'){
-  //$('.sk-circle').toggleClass('hidden');
-  let id = _getSenateID(state);
-  if (format === 'html'){
-    _make_request(id, htmlDisplay);
-  } else {
-    _make_request(id, asJSON);
-  }
-}
-
 function pollChart(state){
   let id = _getPollID(state);
-  _make_request(id, makeArray);
-}
-
-export function senateChart(state){
-  let id = _getSenateID(state);
   _make_request(id, makeArray);
 }
 

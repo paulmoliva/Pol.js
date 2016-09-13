@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script src="../pol-chart.js" charset="utf-8"></script>
+    <script src="../pol.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Pol.js Demo</title>
   </head>
@@ -11,6 +11,7 @@
 
     </div>
     <script>
+    $( () => {
       presidentialPoll();
       presidentialPoll('ohio');
       presidentialPoll('pennsylvania');
@@ -18,6 +19,7 @@
       presidentialPoll('NEW HAMPSHIRE');
       presidentialPoll('four-way-national');
       presidentialPoll(5542);
+    });
     </script>
   </body>
 </html>

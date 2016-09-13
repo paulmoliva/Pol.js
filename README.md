@@ -78,7 +78,7 @@ Live Demo [here](http://www.pauloliva.com/chart-demo.html)
 ```JavaScript
   presidentialPoll(state = 'national', format = 'html')
 ```
-Displays presidential polling as hmtl or json for the specified state. If no state is specified, displays national polling data. If no format is specified, renders HTML to
+Displays presidential polling as html or json for the specified state. If no state is specified, displays national polling data. If no format is specified, renders HTML to
 ```html
 <div id "polls-root">
 ```
@@ -91,4 +91,13 @@ presidentialPoll('virginia', 'html');
 You can get the 4 way race polling with:
 ```JavaScript
 presidentialPoll('four-way-national');
+```
+
+###Senate Races
+
+2016 senate races are also available with Pol.js.
+
+```JavaScript
+senatePoll('Ohio')
+senateChart('Ohio')
 ```
