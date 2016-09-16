@@ -72,8 +72,7 @@ If you want to constrain the size of your chart, place it in a div with a fixed 
 ```
 It's that easy!
 
-Live Demo [here](http://www.pauloliva.com/chart-demo.html)
-React Demo [here](http://poljs-react-demo.herokuapp.com/)
+Live Demo with React.js [here](http://poljs-react-demo.herokuapp.com/)
 
 ##Documentation:
 ```JavaScript
