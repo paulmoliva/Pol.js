@@ -4,7 +4,7 @@ Embed the most up to date political polling data and charts in your site with po
 ##About:
 Pol.js is a synthetic API that retrieves up to the minute polling data from Real Clear Politics and embeds it in your website hassle-free.
 
-As Real Clear Politics does not provide a formal API, but makes their data public, Pol.js fills that gap by providing our a synthetic API that mimics the functionality of a public API.
+As Real Clear Politics does not provide a formal API, but makes their data public, Pol.js fills that gap by providing a synthetic API that mimics the functionality of a public API.
 
 A Pol.js call to ```presidentialPoll(state)``` makes an AJAX request to the URL where the RCP polling data for that state 'lives'.
 
