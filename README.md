@@ -1,7 +1,7 @@
 # Pol.js
 Embed the most up to date political polling data and charts in your site with pol.js.
 
-##### [Live Demo with React.js](http://poljs-react-demo.herokuapp.com/)
+### [Live Demo with React.js](http://poljs-react-demo.herokuapp.com/)
 
 ## About:
 Pol.js is a synthetic API that retrieves up to the minute polling data from Real Clear Politics and embeds it in your website hassle-free.
