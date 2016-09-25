@@ -1,3 +1,4 @@
+var Chart = require('chart.js');
 
 let pollData = {};
 let dates = [];
@@ -7,16 +8,17 @@ function _make_request(pollID, callBack){
   const rcpURL = 'http://www.realclearpolitics.com/epolls/json/';
   const historical = '_historical.js';
   const requestURL = rcpURL + pollID + historical;
-  var request = new XMLHttpRequest();
   $( () => {
     $.ajax(
       {
         url: rcpURL + pollID.toString() + historical,
         dataType: 'jsonp',
+        jsonpCallback: 'return_json',
         success: (someData) => {
+          callBack(someData);
         },
         error: () => {
-          callBack(pollData);
+          _make_request(pollID, callBack);
         }
       });
   });
@@ -103,7 +105,7 @@ function _getPollID(state){
   if (typeof state === 'number'){
     return state;
   }
-  state = state.toLowerCase();
+  if (state) state = state.toLowerCase();
   if (state === 'national'){
     return 5491;
   } else if (state === 'ohio'){
@@ -247,7 +249,7 @@ function _getSenateID(state){
   }
 }
 
-export function senatePoll(state, format = 'html'){
+function senatePoll(state, format = 'html'){
   //$('.sk-circle').toggleClass('hidden');
   let id = _getSenateID(state);
   if (format === 'html'){
@@ -257,12 +259,12 @@ export function senatePoll(state, format = 'html'){
   }
 }
 
-function pollChart(state){
+function presidentalChart(state){
   let id = _getPollID(state);
   _make_request(id, makeArray);
 }
 
-export function senateChart(state){
+function senateChart(state){
   let id = _getSenateID(state);
   _make_request(id, makeArray);
 }
@@ -309,3 +311,12 @@ function makeArray(obj, size = 61) {
     options: {}
   });
 }
+
+let Pol = {
+  presidentialPoll: presidentialPoll,
+  presidentalChart: presidentalChart,
+  senatePoll: senatePoll,
+  senateChart: senateChart
+};
+
+module.exports = Pol;

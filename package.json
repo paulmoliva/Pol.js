@@ -1,0 +1,33 @@
+{
+  "name": "pol.js",
+  "version": "1.0.0",
+  "description": "JavaScript library for retrieving political polling data.",
+  "main": "pol.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulmoliva/Pol.js.git"
+  },
+  "keywords": [
+    "politics",
+    "RealClearPolitics",
+    "api",
+    "polling",
+    "clinton",
+    "trump",
+    "senate",
+    "polls"
+  ],
+  "author": "Paul Oliva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulmoliva/Pol.js/issues"
+  },
+  "homepage": "https://github.com/paulmoliva/Pol.js#readme",
+  "dependencies": {
+    "chart.js": "^2.3.0",
+    "webpack": "^1.13.2"
+  }
+}
