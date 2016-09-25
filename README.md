@@ -1,6 +1,8 @@
 # Pol.js
 Embed the most up to date political polling data and charts in your site with pol.js.
 
+![bar graph](http://www.pauloliva.com/assets/poljslogo.png)
+
 ### [Live Demo with React.js](http://poljs-react-demo.herokuapp.com/)
 
 ## About:
@@ -42,7 +44,7 @@ Or as a historical canvas line chart
 
 
 
-##Quick Start:
+## Quick Start:
 
 Ensure that you include jquery somewhere.
 In your html body, include:
@@ -52,7 +54,7 @@ In your html body, include:
 </div>
 ```
 
-###Embedding Charts
+### Embedding Charts
 
 Pol.js uses [Chart.js](http://www.chartjs.org/) to draw charts. It is included as a dependency in the npm package.
 
@@ -73,7 +75,7 @@ If you want to constrain the size of your chart, place it in a div with a fixed 
 It's that easy!
 
 
-##Documentation:
+## Documentation:
 ```JavaScript
   Pol.presidentialPoll(state = 'national', format = 'html')
 ```
@@ -92,7 +94,7 @@ You can get the 4 way race polling with:
 Pol.presidentialPoll('four-way-national');
 ```
 
-###Senate Races
+### Senate Races
 
 2016 senate races are also available with Pol.js.
 
@@ -100,3 +102,7 @@ Pol.presidentialPoll('four-way-national');
 Pol.senatePoll('Ohio')
 Pol.senateChart('Ohio')
 ```
+
+### Coming Soon
+
+React Component
